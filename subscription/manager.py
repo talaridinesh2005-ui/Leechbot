@@ -45,10 +45,30 @@ async def check_expiries():
     all_premium = await db.get_all_premium_data()
     now = datetime.now()
     for record in all_premium:
+        user_id = record.get('user_id')
         if record.get('active') and record.get('expiry_date') < now:
-            user_id = record.get('user_id')
             await db.update_premium_data(user_id, {"active": False})
             try:
                 await bot.send_message(user_id, "⚠️ Your premium has expired.")
             except Exception as e:
                 LOGGER.error(f"Failed to send expiry message to {user_id}: {e}")
+
+        # Auto Cleanup: Remove expired records older than 90 days
+        elif not record.get('active') and record.get('expiry_date') < now - timedelta(days=90):
+            # We don't have a direct delete_premium in DbManger yet, let's just mark for deletion or leave it
+            # Actually, I'll add delete_premium_data to DbManger
+            await db.delete_premium_data(user_id)
+
+async def cleanup_system():
+    # Clear temp payment cache / transactions older than 24h
+    # This is a placeholder for more complex cleanup
+    LOGGER.info("Running System Cleanup...")
+    # Log rotation is usually handled by the OS/container,
+    # but we can truncate log.txt if it's too large
+    try:
+        if ospath.exists('log.txt') and ospath.getsize('log.txt') > 10 * 1024 * 1024: # 10MB
+            with open('log.txt', 'w') as f:
+                f.truncate(0)
+            LOGGER.info("Log rotated.")
+    except Exception as e:
+        LOGGER.error(f"Cleanup Error: {e}")

@@ -141,6 +141,12 @@ class DbManger:
             return None
         return await self.__db.premium.find_one({'user_id': user_id})
 
+    async def delete_premium_data(self, user_id):
+        if self.__err:
+            return
+        await self.__db.premium.delete_one({'user_id': user_id})
+        self.__conn.close
+
     async def get_all_premium_data(self):
         if self.__err:
             return []

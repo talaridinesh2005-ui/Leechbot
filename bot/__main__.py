@@ -33,7 +33,7 @@ from .helper.themes import BotTheme
 from .modules import authorize, clone, gd_count, gd_delete, gd_list, cancel_mirror, mirror_leech, status, torrent_search, torrent_select, ytdlp, \
                      rss, shell, eval, users_settings, bot_settings, speedtest, save_msg, images, imdb, anilist, mediainfo, mydramalist, gen_pyro_sess, \
                      gd_clean, broadcast, category_select, premium
-from subscription.manager import check_expiries
+from subscription.manager import check_expiries, cleanup_system
 from subscription.plans import plans
 
 async def stats(client, message):
@@ -257,6 +257,7 @@ async def main():
 
     # Schedule background tasks
     scheduler.add_job(check_expiries, 'interval', minutes=30)
+    scheduler.add_job(cleanup_system, 'interval', hours=24)
     scheduler.start()
 
     await gather(start_cleanup(), torrent_search.initiate_search_tools(), restart_notification(), search_images(), set_commands(bot), log_check())
