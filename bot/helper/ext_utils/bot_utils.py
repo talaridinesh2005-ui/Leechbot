@@ -820,6 +820,10 @@ async def set_commands(client):
                 BotCommands.RestartCommand[0],
                 f'or /{BotCommands.RestartCommand[1]} Restart & Update the Bot (Owner or Sudo Only)',
             ),
+            BotCommand(BotCommands.MediaCommand, 'Main Media Dashboard'),
+            BotCommand(BotCommands.MergeCommand, 'Merge Tools'),
+            BotCommand(BotCommands.AudioCommand, 'Audio Tools'),
+            BotCommand(BotCommands.VideoCommand, 'Video Tools'),
         ]
         if config_dict['SHOW_EXTRA_CMDS']:
             bot_cmds.insert(1, BotCommand(BotCommands.MirrorCommand[2], f'or /{BotCommands.MirrorCommand[3]} Mirror and UnZip [links/media/rclone_path]'))

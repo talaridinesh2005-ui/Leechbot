@@ -59,5 +59,9 @@ class _BotCommands:
         self.BroadcastCommand = [f'broadcast{CMD_SUFFIX}', f'bc{CMD_SUFFIX}']
         self.BuyPremiumCommand = f'buypremium{CMD_SUFFIX}'
         self.MyStatsCommand = f'mystats{CMD_SUFFIX}'
+        self.MediaCommand = f'media{CMD_SUFFIX}'
+        self.MergeCommand = f'merge{CMD_SUFFIX}'
+        self.AudioCommand = f'audio{CMD_SUFFIX}'
+        self.VideoCommand = f'video{CMD_SUFFIX}'
 
 BotCommands = _BotCommands()
