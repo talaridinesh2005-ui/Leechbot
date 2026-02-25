@@ -42,10 +42,10 @@ default_values = {'AUTO_DELETE_MESSAGE_DURATION': 30,
                   'BOT_THEME': 'minimal',
                   'BOT_LANG': 'en',
                   'IMG_PAGE': 1,
-                  'AUTHOR_NAME': 'KPS Bots',
-                  'AUTHOR_URL': 'https://telegram.me/KPSBots',
-                  'TITLE_NAME': 'KPSML-X Leech Bot',
-                  'GD_INFO': 'Uploaded by KPSML-X Leech Bot',
+                  'AUTHOR_NAME': 'TDBotDev',
+                  'AUTHOR_URL': 'https://t.me/TDBotDev',
+                  'TITLE_NAME': 'TDBotDev',
+                  'GD_INFO': 'Uploaded by TDBotDev',
                   }
 bool_vars = ['AS_DOCUMENT', 'BOT_PM', 'STOP_DUPLICATE', 'SET_COMMANDS', 'SAVE_MSG', 'SHOW_MEDIAINFO', 'SOURCE_LINK', 'SAFE_MODE', 'SHOW_EXTRA_CMDS',
              'IS_TEAM_DRIVE', 'USE_SERVICE_ACCOUNTS', 'WEB_PINCODE', 'EQUAL_SPLITS', 'DISABLE_DRIVE_LINK', 'DELETE_LINKS', 'CLEAN_LOG_MSG', 'USER_TD_MODE',
@@ -462,11 +462,11 @@ async def load_config():
 
     COVER_IMAGE = environ.get('COVER_IMAGE', '')
     if len(COVER_IMAGE) == 0:
-        COVER_IMAGE = 'https://graph.org/file/0ff9d5e94a070fe4154c0.jpg'
+        COVER_IMAGE = 'https://ibb.co/CK3TrSsj'
 
     GD_INFO = environ.get('GD_INFO', '')
     if len(GD_INFO) == 0:
-        GD_INFO = 'Uploaded by KPSML-X Leech Bot'
+        GD_INFO = 'Uploaded by TDBotDev'
 
     SAVE_MSG = environ.get('SAVE_MSG', '')
     SAVE_MSG = SAVE_MSG.lower() == 'true'
